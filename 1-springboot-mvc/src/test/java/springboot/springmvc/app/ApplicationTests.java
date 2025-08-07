@@ -1,4 +1,4 @@
-package springboot.springmvc.app.__springboot_mvc;
+package springboot.springmvc.app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
