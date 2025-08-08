@@ -19,10 +19,10 @@ public class ConfirmarPalindromo {
         }
 
         if (palindromo){
-            resultado = frase+ " es un palíndromo.";
+            resultado = frase+ " SI es un palíndromo.";
         }
         else {
-            resultado = frase+ " no es un palíndromo.";
+            resultado = frase+ " NO es un palíndromo.";
         }
 
         return resultado;
