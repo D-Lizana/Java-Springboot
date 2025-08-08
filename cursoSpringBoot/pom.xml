@@ -8,11 +8,11 @@
 		<version>3.5.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>springboot.springmvc.app</groupId>
-	<artifactId>1-springboot-mvc</artifactId>
+	<groupId>com.cursospringboot</groupId>
+	<artifactId>cursoSpringBoot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>1-springboot-mvc</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Curso con Spring Boot</name>
+	<description>Proyecto de un microservicio para el curso Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>
