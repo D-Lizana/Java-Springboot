@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
+
+// Aqui lo añadimos a nivel de clase
 @RequestMapping("/clientes")
 public class ClienteRestController {
 
@@ -18,7 +20,9 @@ public class ClienteRestController {
             new Cliente(4, "Diego", "Die", "contraseña4")
     ));
 
-    @GetMapping
+    // Sustituye a getMapping de forma que si se hace una request GET, el metodo que se selecciona es este
+    // El uso de @GetMapping o este depende de las caracteristicas o preferencias del proyecto
+    @RequestMapping(method = RequestMethod.GET)
     public List<Cliente> getClientes() {
         return clientes;
     }
