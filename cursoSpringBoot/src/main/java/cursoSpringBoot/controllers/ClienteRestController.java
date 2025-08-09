@@ -51,6 +51,15 @@ public class ClienteRestController {
         }
     }
 
+    @DeleteMapping("/clientes/{id}")
+    public void deleteMapping(@PathVariable int id){
+        for(Cliente c: clientes){
+            if(c.getId() == id){
+                clientes.remove(c);
+            }
+        }
+    }
+
 
 
 
