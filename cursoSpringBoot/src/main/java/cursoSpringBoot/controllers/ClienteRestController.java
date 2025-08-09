@@ -27,7 +27,9 @@ public class ClienteRestController {
         return clientes;
     }
 
-    @GetMapping("/{nombreUsuario}")
+    // En este caso añadimos value para coger la variable que vamos a utilizar
+    @RequestMapping(value = "/{nombreUsuario}", method = RequestMethod.GET)
+    //@GetMapping("/{nombreUsuario}")
     public Cliente getCliente(@PathVariable String nombreUsuario) {
 
         for (Cliente cliente : clientes) {
