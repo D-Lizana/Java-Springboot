@@ -1,9 +1,7 @@
 package cursoSpringBoot.controllers;
 
 import cursoSpringBoot.domain.Cliente;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,4 +32,13 @@ public class ClienteRestController {
         }
         return null;
     }
+
+
+    @PostMapping("/clientes/")
+    public void postCliente(@RequestBody Cliente cliente){
+        clientes.add(cliente);
+    }
+
+
+
 }
