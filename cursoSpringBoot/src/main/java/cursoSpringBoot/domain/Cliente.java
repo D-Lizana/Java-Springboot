@@ -2,12 +2,11 @@ package cursoSpringBoot.domain;
 // CLASE POJO
 
 public class Cliente {
-
-
     private int id;
     private String nombre;
     private String nombreUsuario;
     private String contrasena;
+
 
     public Cliente(int id, String nombre, String nombreUsuario, String contrasena){
         this.id = id;

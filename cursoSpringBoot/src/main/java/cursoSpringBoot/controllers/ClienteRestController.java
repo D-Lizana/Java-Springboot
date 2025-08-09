@@ -65,14 +65,14 @@ public class ClienteRestController {
     public void patchCliente(@RequestBody Cliente cliente) {
         for (Cliente c : clientes) {
             if (c.getId() == cliente.getId()) {
-                if (c.getNombre() != null){
+                if (cliente.getNombre() != null) {
                     c.setNombre(cliente.getNombre());
                 }
-                if (c.getNombreUsuario() != null){
-                    c.setNombre(cliente.getNombreUsuario());
+                if (cliente.getNombreUsuario() != null) {
+                    c.setNombreUsuario(cliente.getNombreUsuario());
                 }
-                if (c.getContrasena() != null){
-                    c.setNombre(cliente.getContrasena());
+                if (cliente.getContrasena() != null) {
+                    c.setContrasena(cliente.getContrasena());
                 }
             }
         }
