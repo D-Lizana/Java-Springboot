@@ -2,6 +2,7 @@ package cursoSpringBoot.controllers;
 
 import cursoSpringBoot.domain.Cliente;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -23,5 +24,14 @@ public class ClienteRestController {
         return clientes;
     }
 
+    @GetMapping("/clientes/{nombreUsuario}")
+    public Cliente getCliente(@PathVariable String nombreUsuario){
 
+        for(Cliente cliente: clientes){
+            if(cliente.getNombreUsuario().equalsIgnoreCase(nombreUsuario)){
+                return cliente;
+            }
+        }
+        return null;
+    }
 }
