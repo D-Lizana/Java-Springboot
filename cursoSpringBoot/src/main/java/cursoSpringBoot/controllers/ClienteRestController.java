@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
+@RequestMapping("/clientes")
 public class ClienteRestController {
 
     private List<Cliente> clientes = new ArrayList<>(Arrays.asList(
@@ -17,12 +18,12 @@ public class ClienteRestController {
             new Cliente(4, "Diego", "Die", "contraseña4")
     ));
 
-    @GetMapping("/clientes")
+    @GetMapping
     public List<Cliente> getClientes() {
         return clientes;
     }
 
-    @GetMapping("/clientes/{nombreUsuario}")
+    @GetMapping("/{nombreUsuario}")
     public Cliente getCliente(@PathVariable String nombreUsuario) {
 
         for (Cliente cliente : clientes) {
@@ -34,13 +35,13 @@ public class ClienteRestController {
     }
 
     // Las anotaciones POST se usan para añadir nuevos datos
-    @PostMapping("/clientes")
+    @PostMapping
     public void postCliente(@RequestBody Cliente cliente) {
         clientes.add(cliente);
     }
 
     // Las anotaciones PUT se usan para modificar o actualizar varios datos
-    @PutMapping("/clientes")
+    @PutMapping
     public void putCliente(@RequestBody Cliente cliente) {
         for (Cliente c : clientes) {
             if (cliente.getId() == c.getId()) {
@@ -52,7 +53,7 @@ public class ClienteRestController {
     }
 
     // Anotación DELETE para borrar datos de la bbdd
-    @DeleteMapping("/clientes/{id}")
+    @DeleteMapping("/{id}")
     public void deleteMapping(@PathVariable int id) {
         for (Cliente c : clientes) {
             if (c.getId() == id) {
@@ -61,7 +62,7 @@ public class ClienteRestController {
         }
     }
 
-    @PatchMapping("/clientes")
+    @PatchMapping
     public void patchCliente(@RequestBody Cliente cliente) {
         for (Cliente c : clientes) {
             if (c.getId() == cliente.getId()) {
