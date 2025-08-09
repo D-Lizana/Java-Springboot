@@ -33,11 +33,24 @@ public class ClienteRestController {
         return null;
     }
 
-
-    @PostMapping("/clientes/")
+    // Las anotaciones POST se usan para añadir nuevos datos
+    @PostMapping("/clientes")
     public void postCliente(@RequestBody Cliente cliente){
         clientes.add(cliente);
     }
+
+    // Las anotaciones PUT se usan para modificar o actualizar datos
+    @PutMapping("/clientes")
+    public void putCliente(@RequestBody Cliente cliente){
+        for(Cliente c: clientes){
+            if(cliente.getId() == c.getId()){
+                c.setNombre(cliente.getNombre());
+                c.setNombreUsuario(cliente.getNombreUsuario());
+                c.setContrasena(cliente.getContrasena());
+            }
+        }
+    }
+
 
 
 
