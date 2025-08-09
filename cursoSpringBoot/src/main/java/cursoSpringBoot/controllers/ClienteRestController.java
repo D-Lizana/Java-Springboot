@@ -22,14 +22,15 @@ public class ClienteRestController {
 
     // Sustituye a getMapping de forma que si se hace una request GET, el metodo que se selecciona es este
     // El uso de @GetMapping o este depende de las caracteristicas o preferencias del proyecto
-    @RequestMapping(method = RequestMethod.GET)
+    //@RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public List<Cliente> getClientes() {
         return clientes;
     }
 
     // En este caso añadimos value para coger la variable que vamos a utilizar
-    @RequestMapping(value = "/{nombreUsuario}", method = RequestMethod.GET)
-    //@GetMapping("/{nombreUsuario}")
+    //@RequestMapping(value = "/{nombreUsuario}", method = RequestMethod.GET)
+    @GetMapping("/{nombreUsuario}")
     public Cliente getCliente(@PathVariable String nombreUsuario) {
 
         for (Cliente cliente : clientes) {
@@ -41,15 +42,15 @@ public class ClienteRestController {
     }
 
     // Las anotaciones POST se usan para añadir nuevos datos
-    @RequestMapping( method = RequestMethod.POST)
-    //@PostMapping
+    //@RequestMapping( method = RequestMethod.POST)
+    @PostMapping
     public void postCliente(@RequestBody Cliente cliente) {
         clientes.add(cliente);
     }
 
     // Las anotaciones PUT se usan para modificar o actualizar varios datos
-    @RequestMapping(method = RequestMethod.PUT)
-    //@PutMapping
+    //@RequestMapping(method = RequestMethod.PUT)
+    @PutMapping
     public void putCliente(@RequestBody Cliente cliente) {
         for (Cliente c : clientes) {
             if (cliente.getId() == c.getId()) {
@@ -61,8 +62,8 @@ public class ClienteRestController {
     }
 
     // Anotación DELETE para borrar datos de la bbdd
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    //@DeleteMapping("/{id}")
+    //@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/{id}")
     public void deleteMapping(@PathVariable int id) {
         for (Cliente c : clientes) {
             if (c.getId() == id) {
@@ -71,8 +72,8 @@ public class ClienteRestController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.PATCH)
-    //@PatchMapping
+    //@RequestMapping(method = RequestMethod.PATCH)
+    @PatchMapping
     public void patchCliente(@RequestBody Cliente cliente) {
         for (Cliente c : clientes) {
             if (c.getId() == cliente.getId()) {
