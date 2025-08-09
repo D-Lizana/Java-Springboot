@@ -51,6 +51,7 @@ public class ClienteRestController {
         }
     }
 
+    // Anotación DELETE para borrar datos de la bbdd
     @DeleteMapping("/clientes/{id}")
     public void deleteMapping(@PathVariable int id){
         for(Cliente c: clientes){
