@@ -41,13 +41,15 @@ public class ClienteRestController {
     }
 
     // Las anotaciones POST se usan para añadir nuevos datos
-    @PostMapping
+    @RequestMapping( method = RequestMethod.POST)
+    //@PostMapping
     public void postCliente(@RequestBody Cliente cliente) {
         clientes.add(cliente);
     }
 
     // Las anotaciones PUT se usan para modificar o actualizar varios datos
-    @PutMapping
+    @RequestMapping(method = RequestMethod.PUT)
+    //@PutMapping
     public void putCliente(@RequestBody Cliente cliente) {
         for (Cliente c : clientes) {
             if (cliente.getId() == c.getId()) {
@@ -59,7 +61,8 @@ public class ClienteRestController {
     }
 
     // Anotación DELETE para borrar datos de la bbdd
-    @DeleteMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    //@DeleteMapping("/{id}")
     public void deleteMapping(@PathVariable int id) {
         for (Cliente c : clientes) {
             if (c.getId() == id) {
@@ -68,7 +71,8 @@ public class ClienteRestController {
         }
     }
 
-    @PatchMapping
+    @RequestMapping(method = RequestMethod.PATCH)
+    //@PatchMapping
     public void patchCliente(@RequestBody Cliente cliente) {
         for (Cliente c : clientes) {
             if (c.getId() == cliente.getId()) {
