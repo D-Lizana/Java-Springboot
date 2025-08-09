@@ -18,15 +18,15 @@ public class ClienteRestController {
     ));
 
     @GetMapping("/clientes")
-    public List<Cliente> getClientes(){
+    public List<Cliente> getClientes() {
         return clientes;
     }
 
     @GetMapping("/clientes/{nombreUsuario}")
-    public Cliente getCliente(@PathVariable String nombreUsuario){
+    public Cliente getCliente(@PathVariable String nombreUsuario) {
 
-        for(Cliente cliente: clientes){
-            if(cliente.getNombreUsuario().equalsIgnoreCase(nombreUsuario)){
+        for (Cliente cliente : clientes) {
+            if (cliente.getNombreUsuario().equalsIgnoreCase(nombreUsuario)) {
                 return cliente;
             }
         }
@@ -35,15 +35,15 @@ public class ClienteRestController {
 
     // Las anotaciones POST se usan para añadir nuevos datos
     @PostMapping("/clientes")
-    public void postCliente(@RequestBody Cliente cliente){
+    public void postCliente(@RequestBody Cliente cliente) {
         clientes.add(cliente);
     }
 
-    // Las anotaciones PUT se usan para modificar o actualizar datos
+    // Las anotaciones PUT se usan para modificar o actualizar varios datos
     @PutMapping("/clientes")
-    public void putCliente(@RequestBody Cliente cliente){
-        for(Cliente c: clientes){
-            if(cliente.getId() == c.getId()){
+    public void putCliente(@RequestBody Cliente cliente) {
+        for (Cliente c : clientes) {
+            if (cliente.getId() == c.getId()) {
                 c.setNombre(cliente.getNombre());
                 c.setNombreUsuario(cliente.getNombreUsuario());
                 c.setContrasena(cliente.getContrasena());
@@ -53,15 +53,30 @@ public class ClienteRestController {
 
     // Anotación DELETE para borrar datos de la bbdd
     @DeleteMapping("/clientes/{id}")
-    public void deleteMapping(@PathVariable int id){
-        for(Cliente c: clientes){
-            if(c.getId() == id){
+    public void deleteMapping(@PathVariable int id) {
+        for (Cliente c : clientes) {
+            if (c.getId() == id) {
                 clientes.remove(c);
             }
         }
     }
 
-
+    @PatchMapping("/clientes")
+    public void patchCliente(@RequestBody Cliente cliente) {
+        for (Cliente c : clientes) {
+            if (c.getId() == cliente.getId()) {
+                if (c.getNombre() != null){
+                    c.setNombre(cliente.getNombre());
+                }
+                if (c.getNombreUsuario() != null){
+                    c.setNombre(cliente.getNombreUsuario());
+                }
+                if (c.getContrasena() != null){
+                    c.setNombre(cliente.getContrasena());
+                }
+            }
+        }
+    }
 
 
 }
