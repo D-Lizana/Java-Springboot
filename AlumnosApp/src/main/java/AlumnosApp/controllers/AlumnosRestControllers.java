@@ -1,10 +1,7 @@
 package AlumnosApp.controllers;
 
 import AlumnosApp.domain.Alumno;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,6 +32,26 @@ public class AlumnosRestControllers {
             }
         }
         return null;
+    }
+
+    @PatchMapping
+    public void patchAlumno(@RequestBody Alumno alumno){
+        for(Alumno a: alumnos){
+            if(alumno.getId() == a.getId()){
+                if (alumno.getNombre() != null){
+                    a.setNombre(alumno.getNombre());
+                }
+                if (alumno.getEmail() != null){
+                    a.setEmail(alumno.getEmail());
+                }
+                if (alumno.getEdad() != null){
+                    a.setEdad(alumno.getEdad());
+                }
+                if (alumno.getCurso() != null){
+                    a.setCurso(alumno.getCurso());
+                }
+            }
+        }
     }
 
 

@@ -4,7 +4,7 @@ public class Alumno {
     private int id;
     private String nombre;
     private String email;
-    private int edad;
+    private Integer edad;
     private String curso;
 
     public Alumno(int id, String nombre, String email, int edad, String curso) {
