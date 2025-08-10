@@ -67,9 +67,14 @@ public class AlumnosRestControllers {
         }
     }
 
-
-
-
+    @DeleteMapping("/{id}")
+    public void deleteAlumno(@PathVariable int id){
+        for(Alumno a: alumnos){
+            if(id == a.getId()){
+                alumnos.remove(a);
+            }
+        }
+    }
 
 
 }
