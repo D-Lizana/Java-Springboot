@@ -1,6 +1,8 @@
 package cursoSpringBoot.controllers;
 
 import cursoSpringBoot.domain.Cliente;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -24,21 +26,22 @@ public class ClienteRestController {
     // El uso de @GetMapping o este depende de las caracteristicas o preferencias del proyecto
     //@RequestMapping(method = RequestMethod.GET)
     @GetMapping
-    public List<Cliente> getClientes() {
-        return clientes;
+    public ResponseEntity<List<Cliente>> getClientes() {
+        // Añadimos la clase ResponseEntity para conocer el status de la operacion
+        return ResponseEntity.ok(clientes);
     }
 
     // En este caso añadimos value para coger la variable que vamos a utilizar
     //@RequestMapping(value = "/{nombreUsuario}", method = RequestMethod.GET)
     @GetMapping("/{nombreUsuario}")
-    public Cliente getCliente(@PathVariable String nombreUsuario) {
+    public ResponseEntity<?> getCliente(@PathVariable String nombreUsuario) {
 
         for (Cliente cliente : clientes) {
             if (cliente.getNombreUsuario().equalsIgnoreCase(nombreUsuario)) {
-                return cliente;
+                return ResponseEntity.ok(cliente);
             }
         }
-        return null;
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado con nombre de usuario: "+nombreUsuario);
     }
 
     // Las anotaciones POST se usan para añadir nuevos datos
