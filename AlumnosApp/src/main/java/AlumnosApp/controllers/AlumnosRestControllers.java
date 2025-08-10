@@ -67,6 +67,13 @@ public class AlumnosRestControllers {
         }
     }
 
+
+    @PostMapping
+    public void postAlumno(@RequestBody Alumno alumno){
+        alumnos.add(alumno);
+    }
+
+
     @DeleteMapping("/{id}")
     public void deleteAlumno(@PathVariable int id){
         for(Alumno a: alumnos){
