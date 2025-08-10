@@ -2,6 +2,7 @@ package AlumnosApp.controllers;
 
 import AlumnosApp.domain.Alumno;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,6 +26,16 @@ public class AlumnosRestControllers {
         return alumnos;
     }
 
+
+    @GetMapping("/{email}")
+    public  Alumno getAlumnoPorEmail(@PathVariable String email){
+        for(Alumno a: alumnos){
+            if(a.getEmail().equalsIgnoreCase(email)){
+                return a;
+            }
+        }
+        return null;
+    }
 
 
 
