@@ -57,7 +57,7 @@ public class AlumnosRestControllers {
                 if (alumno.getEmail() != null){
                     a.setEmail(alumno.getEmail());
                 }
-                if (alumno.getEdad() != null){
+                if (alumno.getEdad() != 0){
                     a.setEdad(alumno.getEdad());
                 }
                 if (alumno.getCurso() != null){

@@ -4,7 +4,7 @@ public class Alumno {
     private int id;
     private String nombre;
     private String email;
-    private Integer edad;
+    private int edad;
     private String curso;
 
     public Alumno(int id, String nombre, String email, int edad, String curso) {
@@ -39,11 +39,11 @@ public class Alumno {
         this.email = email;
     }
 
-    public Integer getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    public void setEdad(Integer edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
 
