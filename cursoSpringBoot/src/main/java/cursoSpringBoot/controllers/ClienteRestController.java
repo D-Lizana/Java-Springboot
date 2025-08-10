@@ -56,14 +56,16 @@ public class ClienteRestController {
     // Las anotaciones PUT se usan para modificar o actualizar varios datos
     //@RequestMapping(method = RequestMethod.PUT)
     @PutMapping
-    public void putCliente(@RequestBody Cliente cliente) {
+    public ResponseEntity<?> putCliente(@RequestBody Cliente cliente) {
         for (Cliente c : clientes) {
             if (cliente.getId() == c.getId()) {
                 c.setNombre(cliente.getNombre());
                 c.setNombreUsuario(cliente.getNombreUsuario());
                 c.setContrasena(cliente.getContrasena());
+                return ResponseEntity.ok("Cliente modificado con éxito.");
             }
         }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado con id: "+ cliente.getId());
     }
 
 
