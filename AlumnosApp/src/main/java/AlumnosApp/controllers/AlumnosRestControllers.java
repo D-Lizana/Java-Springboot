@@ -34,6 +34,19 @@ public class AlumnosRestControllers {
         return null;
     }
 
+
+    @PutMapping("/{id}")
+    public void putAlumno(@RequestBody Alumno alumno){
+        for(Alumno a: alumnos){
+            if(alumno.getId() == a.getId()){
+                a.setNombre(alumno.getNombre());
+                a.setEmail(alumno.getEmail());
+                a.setEdad(alumno.getEdad());
+                a.setCurso(alumno.getCurso());
+            }
+        }
+    }
+
     @PatchMapping
     public void patchAlumno(@RequestBody Alumno alumno){
         for(Alumno a: alumnos){
