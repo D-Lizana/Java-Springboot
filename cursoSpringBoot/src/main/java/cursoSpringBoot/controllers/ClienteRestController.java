@@ -47,9 +47,11 @@ public class ClienteRestController {
     // Las anotaciones POST se usan para añadir nuevos datos
     //@RequestMapping( method = RequestMethod.POST)
     @PostMapping
-    public void postCliente(@RequestBody Cliente cliente) {
+    public ResponseEntity<?> postCliente(@RequestBody Cliente cliente) {
         clientes.add(cliente);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Cliente creado con éxito.");
     }
+
 
     // Las anotaciones PUT se usan para modificar o actualizar varios datos
     //@RequestMapping(method = RequestMethod.PUT)
@@ -63,6 +65,7 @@ public class ClienteRestController {
             }
         }
     }
+
 
     // Anotación DELETE para borrar datos de la bbdd
     //@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
