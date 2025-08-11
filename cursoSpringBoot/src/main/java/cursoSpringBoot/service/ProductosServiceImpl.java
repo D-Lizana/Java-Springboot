@@ -1,13 +1,20 @@
 package cursoSpringBoot.service;
 
 import cursoSpringBoot.domain.Producto;
+
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Service("listResourceService")
+// Lazy para que el servicio no se inicialice hasta que no sea necesario o utilizado
+@Lazy
+// Ahora hemos metido el nombre en la condicion en vez de en el servicio directamente
+@Service//("listResourceService")
+@ConditionalOnProperty(name = "service.producto", havingValue = "list")
 public class ProductosServiceImpl implements ProductoService{
 
     List<Producto> productos = new ArrayList<>(Arrays.asList(

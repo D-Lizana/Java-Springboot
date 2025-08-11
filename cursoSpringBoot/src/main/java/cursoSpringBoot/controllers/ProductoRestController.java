@@ -6,6 +6,7 @@ import cursoSpringBoot.service.ProductoService;
 import cursoSpringBoot.service.ProductosServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -21,9 +22,13 @@ public class ProductoRestController {
 
     // Instancia de la clase para poder usar el metodo del servicio. Lo vamos a implementar inyectando directamente la dependencia por campo
     //ProductoService productosService = new ProductosServiceImpl();
+
+    @Lazy
     @Autowired
     // @Qualifier tiene prioridad respecto a @Primary
-    @Qualifier("listResourceService")
+
+
+    // @Qualifier("jsonResourceService") si usamos qualifier siempre se sobrepone a los otros metodos, incluido las propiedades de la aplicacion
     private ProductoService productosService;
 
     // Una dependencia porque depende de otro objeto para llevar a cabo su función
