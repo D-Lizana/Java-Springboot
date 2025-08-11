@@ -6,6 +6,9 @@ public class Producto {
     private Double precio;
     private Integer cantidad;
 
+    public Producto() {
+    }
+
     public Producto(Integer id, String nombre, Double precio, Integer cantidad) {
         this.id = id;
         this.nombre = nombre;
