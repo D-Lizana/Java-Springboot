@@ -6,8 +6,10 @@ import cursoSpringBoot.service.ProductoService;
 import cursoSpringBoot.service.ProductosServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -45,6 +47,20 @@ public class ProductoRestController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping
+    public ResponseEntity<?> postProducto(@RequestBody Producto productoNuevo){
+        Producto producto = productosService.postProducto(productoNuevo);
+
+        URI ubicacion = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{nombreUsuario}")
+                .buildAndExpand(producto.getNombre())
+                .toUri();
+
+        return ResponseEntity.created(ubicacion).body(producto);
+    }
+
 
 
 

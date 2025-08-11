@@ -9,8 +9,8 @@ import java.util.List;
 public class ProductosServiceImpl implements ProductoService{
 
     List<Producto> productos = new ArrayList<>(Arrays.asList(
-            new Producto(001,"Hacha",20.0,3),
-            new Producto(002,"Martillo",12.50,7)
+            new Producto(1,"Hacha",20.0,3),
+            new Producto(2,"Martillo",12.50,7)
     ));
 
 
@@ -38,6 +38,12 @@ public class ProductosServiceImpl implements ProductoService{
             }
         }
         return null;
+    }
+
+    @Override
+    public Producto postProducto(Producto producto){
+        productos.add(producto);
+        return producto;
     }
 
 

@@ -12,4 +12,5 @@ public interface ProductoService {
 
     public Producto deleteProducto(Integer id);
 
+    public Producto postProducto(Producto producto);
 }
