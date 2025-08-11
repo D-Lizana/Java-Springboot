@@ -5,6 +5,7 @@ import cursoSpringBoot.domain.Producto;
 import cursoSpringBoot.service.ProductoService;
 import cursoSpringBoot.service.ProductosServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -21,6 +22,7 @@ public class ProductoRestController {
     // Instancia de la clase para poder usar el metodo del servicio. Lo vamos a implementar inyectando directamente la dependencia por campo
     //ProductoService productosService = new ProductosServiceImpl();
     @Autowired
+    @Qualifier("listResourceService")
     private ProductoService productosService;
 
     // Una dependencia porque depende de otro objeto para llevar a cabo su función

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Service
+@Service("listResourceService")
 public class ProductosServiceImpl implements ProductoService{
 
     List<Producto> productos = new ArrayList<>(Arrays.asList(
