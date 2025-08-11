@@ -1,23 +1,23 @@
 package cursoSpringBoot.domain;
 
 public class Producto {
-    private int id;
+    private Integer id;
     private String nombre;
-    private double precio;
-    private int cantidad;
+    private Double precio;
+    private Integer cantidad;
 
-    public Producto(int id, String nombre, double precio, int cantidad) {
+    public Producto(Integer id, String nombre, Double precio, Integer cantidad) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -29,19 +29,19 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public double getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
-    public int getCantidad() {
+    public Integer getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
 }
