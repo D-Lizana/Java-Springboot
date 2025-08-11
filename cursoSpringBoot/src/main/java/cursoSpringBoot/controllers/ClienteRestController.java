@@ -62,7 +62,7 @@ public class ClienteRestController {
                 .buildAndExpand(cliente.getNombreUsuario())
                 .toUri();
 
-        return ResponseEntity.created(ubicacion).build();
+        return ResponseEntity.created(ubicacion).body(cliente);
 
     }
 
