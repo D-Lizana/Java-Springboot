@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ProductosServiceImpl {
+public class ProductosServiceImpl implements ProductoService{
 
     List<Producto> productos = new ArrayList<>(Arrays.asList(
             new Producto(001,"Hacha",20.0,3),
@@ -14,8 +14,19 @@ public class ProductosServiceImpl {
     ));
 
 
+    @Override
     public List<Producto> getProductos() {
         return productos;
+    }
+
+    @Override
+    public Producto getProducto(Integer id){
+        for(Producto p: productos){
+            if (p.getId() == id){
+                return p;
+            }
+        }
+        return null;
     }
 
 
