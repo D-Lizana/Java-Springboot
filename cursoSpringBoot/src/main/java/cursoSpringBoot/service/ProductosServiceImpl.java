@@ -1,11 +1,13 @@
 package cursoSpringBoot.service;
 
 import cursoSpringBoot.domain.Producto;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Service
 public class ProductosServiceImpl implements ProductoService{
 
     List<Producto> productos = new ArrayList<>(Arrays.asList(

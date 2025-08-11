@@ -4,6 +4,7 @@ package cursoSpringBoot.controllers;
 import cursoSpringBoot.domain.Producto;
 import cursoSpringBoot.service.ProductoService;
 import cursoSpringBoot.service.ProductosServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -17,8 +18,12 @@ import java.util.List;
 @RequestMapping("/productos")
 public class ProductoRestController {
 
-    ProductoService productosService = new ProductosServiceImpl();
+    // Instancia de la clase para poder usar el metodo del servicio. Lo vamos a implementar inyectando directamente la dependencia por campo
+    //ProductoService productosService = new ProductosServiceImpl();
+    @Autowired
+    private ProductoService productosService;
 
+    // Una dependencia porque depende de otro objeto para llevar a cabo su función
     @GetMapping
     public ResponseEntity<?> getProductos(){
         List<Producto> productos = productosService.getProductos();
