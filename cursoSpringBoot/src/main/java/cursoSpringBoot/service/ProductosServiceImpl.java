@@ -14,7 +14,9 @@ public class ProductosServiceImpl {
     ));
 
 
-
+    public List<Producto> getProductos() {
+        return productos;
+    }
 
 
 }
