@@ -29,5 +29,16 @@ public class ProductosServiceImpl implements ProductoService{
         return null;
     }
 
+    @Override
+    public Producto deleteProducto(Integer id){
+        for(Producto p: productos){
+            if (p.getId() == id){
+                productos.remove(p);
+                return p;
+            }
+        }
+        return null;
+    }
+
 
 }
