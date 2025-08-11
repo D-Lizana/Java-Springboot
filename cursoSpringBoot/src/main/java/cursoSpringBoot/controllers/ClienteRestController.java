@@ -76,7 +76,7 @@ public class ClienteRestController {
         for (Cliente c : clientes) {
             if (c.getId() == id) {
                 clientes.remove(c);
-                return ResponseEntity.ok("Cliente borrado con éxito.");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente borrado con éxito.");
             }
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado con id: "+ id);
@@ -84,7 +84,7 @@ public class ClienteRestController {
 
     //@RequestMapping(method = RequestMethod.PATCH)
     @PatchMapping
-    public void patchCliente(@RequestBody Cliente cliente) {
+    public ResponseEntity<?> patchCliente(@RequestBody Cliente cliente) {
         for (Cliente c : clientes) {
             if (c.getId() == cliente.getId()) {
                 if (cliente.getNombre() != null) {
@@ -96,8 +96,10 @@ public class ClienteRestController {
                 if (cliente.getContrasena() != null) {
                     c.setContrasena(cliente.getContrasena());
                 }
+                return ResponseEntity.ok("Cliente con ID: "+cliente.getId()+" modificado con éxito.");
             }
         }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado con id: "+ cliente.getId());
     }
 
 
