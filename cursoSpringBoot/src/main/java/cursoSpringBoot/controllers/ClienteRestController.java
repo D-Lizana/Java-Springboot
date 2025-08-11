@@ -86,7 +86,7 @@ public class ClienteRestController {
     // Anotación DELETE para borrar datos de la bbdd
     //@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteMapping(@PathVariable int id) {
+    public ResponseEntity<?> deleteCliente(@PathVariable int id) {
         for (Cliente c : clientes) {
             if (c.getId() == id) {
                 clientes.remove(c);
