@@ -4,7 +4,9 @@ import cursoSpringBoot.domain.Cliente;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -50,7 +52,18 @@ public class ClienteRestController {
     @PostMapping
     public ResponseEntity<?> postCliente(@RequestBody Cliente cliente) {
         clientes.add(cliente);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Cliente creado con éxito.");
+
+        // return ResponseEntity.status(HttpStatus.CREATED).body("Cliente creado con éxito.");
+        // para POST la convención es retornar la URI del objeto creado
+
+        URI ubicacion = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{nombreUsuario}")
+                .buildAndExpand(cliente.getNombreUsuario())
+                .toUri();
+
+        return ResponseEntity.created(ubicacion).build();
+
     }
 
 
