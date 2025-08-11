@@ -72,12 +72,14 @@ public class ClienteRestController {
     // Anotación DELETE para borrar datos de la bbdd
     //@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @DeleteMapping("/{id}")
-    public void deleteMapping(@PathVariable int id) {
+    public ResponseEntity<?> deleteMapping(@PathVariable int id) {
         for (Cliente c : clientes) {
             if (c.getId() == id) {
                 clientes.remove(c);
+                return ResponseEntity.ok("Cliente borrado con éxito.");
             }
         }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado con id: "+ id);
     }
 
     //@RequestMapping(method = RequestMethod.PATCH)
