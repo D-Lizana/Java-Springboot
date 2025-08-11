@@ -22,6 +22,7 @@ public class ProductoRestController {
     // Instancia de la clase para poder usar el metodo del servicio. Lo vamos a implementar inyectando directamente la dependencia por campo
     //ProductoService productosService = new ProductosServiceImpl();
     @Autowired
+    // @Qualifier tiene prioridad respecto a @Primary
     @Qualifier("listResourceService")
     private ProductoService productosService;
 
