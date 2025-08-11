@@ -1,6 +1,7 @@
 package cursoSpringBoot.controllers;
 
 
+import cursoSpringBoot.configurations.ExternalizedConfigurations;
 import cursoSpringBoot.domain.Producto;
 import cursoSpringBoot.service.ProductoService;
 import cursoSpringBoot.service.ProductosServiceImpl;
@@ -26,14 +27,18 @@ public class ProductoRestController {
     @Lazy
     @Autowired
     // @Qualifier tiene prioridad respecto a @Primary
-
-
     // @Qualifier("jsonResourceService") si usamos qualifier siempre se sobrepone a los otros metodos, incluido las propiedades de la aplicacion
     private ProductoService productosService;
+
+
+    @Autowired
+    private ExternalizedConfigurations externalizedConfigurations;
+
 
     // Una dependencia porque depende de otro objeto para llevar a cabo su función
     @GetMapping
     public ResponseEntity<?> getProductos(){
+        System.out.println(externalizedConfigurations.toString());
         List<Producto> productos = productosService.getProductos();
         return ResponseEntity.ok(productos);
     }
