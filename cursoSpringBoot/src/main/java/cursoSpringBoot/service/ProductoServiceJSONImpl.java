@@ -3,11 +3,13 @@ package cursoSpringBoot.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cursoSpringBoot.domain.Producto;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
 
+@Primary
 @Service
 public class ProductoServiceJSONImpl implements ProductoService{
 
