@@ -41,7 +41,8 @@ public class ClienteRestController {
                 return ResponseEntity.ok(cliente);
             }
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado con nombre de usuario: "+nombreUsuario);
+        //return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado con nombre de usuario: "+nombreUsuario);
+        return ResponseEntity.notFound().build();
     }
 
     // Las anotaciones POST se usan para añadir nuevos datos
@@ -62,10 +63,10 @@ public class ClienteRestController {
                 c.setNombre(cliente.getNombre());
                 c.setNombreUsuario(cliente.getNombreUsuario());
                 c.setContrasena(cliente.getContrasena());
-                return ResponseEntity.ok("Cliente modificado con éxito.");
+                return ResponseEntity.noContent().build();
             }
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado con id: "+ cliente.getId());
+        return ResponseEntity.notFound().build();
     }
 
 
@@ -76,10 +77,12 @@ public class ClienteRestController {
         for (Cliente c : clientes) {
             if (c.getId() == id) {
                 clientes.remove(c);
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente borrado con éxito.");
+                //return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente borrado con éxito.");
+                return ResponseEntity.noContent().build();
             }
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado con id: "+ id);
+        //return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado con id: "+ id);
+        return ResponseEntity.notFound().build();
     }
 
     //@RequestMapping(method = RequestMethod.PATCH)
@@ -99,7 +102,8 @@ public class ClienteRestController {
                 return ResponseEntity.ok("Cliente con ID: "+cliente.getId()+" modificado con éxito.");
             }
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado con id: "+ cliente.getId());
+        //return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado con id: "+ cliente.getId());
+        return ResponseEntity.notFound().build();
     }
 
 
